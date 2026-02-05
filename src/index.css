@@ -9,6 +9,11 @@
   --mx-glow-y: 20%;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
 body {
   background-color: rgb(250 250 250);
   font-size: 110%;
@@ -28,7 +33,7 @@ body {
 .mx-bg::before {
   content: "";
   position: absolute;
-  inset: -200px;
+  inset: 0;
   background:
     radial-gradient(
       500px 500px at var(--mx-glow-x) var(--mx-glow-y),

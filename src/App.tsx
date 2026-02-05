@@ -54,13 +54,13 @@ const activity = [
 const apps = [
   {
     title: "Wordle Helper",
-    meta: "Daily puzzle assistant",
+    meta: "Refine your guesses by filtering possible words",
     url: "apps.mysxan.com/wordle-helper/",
     href: "https://apps.mysxan.com/wordle-helper/",
   },
   {
     title: "Course Scheduler",
-    meta: "Plan and preview schedules",
+    meta: "Visualize, manage, and export your schedules",
     url: "apps.mysxan.com/course-scheduler/",
     href: "https://apps.mysxan.com/course-scheduler/",
   },
@@ -204,13 +204,6 @@ function TiltCard({
 export default function App() {
   useCursorGlow();
 
-  const handleLinksClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    const maxScroll =
-      document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo({ top: maxScroll, behavior: "smooth" });
-  };
-
   return (
     <div className="mx-bg relative text-zinc-900">
       <header className="fixed left-0 right-0 top-0 z-40 bg-white/70 backdrop-blur">
@@ -244,11 +237,7 @@ export default function App() {
               >
                 Portfolio
               </a>
-              <a
-                className="transition hover:text-zinc-900"
-                href="#"
-                onClick={handleLinksClick}
-              >
+              <a className="transition hover:text-zinc-900" href="#links">
                 Links
               </a>
             </nav>
@@ -307,7 +296,7 @@ export default function App() {
                 Latest activity
               </h2>
               <a
-                className="text-sm text-slate-600 transition duration-150 hover:text-slate-900"
+                className="text-sm text-slate-600 transition duration-150 hover:text-slate-900 pr-1"
                 href="/activities"
               >
                 View all
@@ -318,8 +307,8 @@ export default function App() {
                 {activity.map((item) => (
                   <li key={item.title} className="px-5 py-4">
                     <a href={item.href} className="group block">
-                      <div className="flex items-center justify-between gap-3">
-                        <div className="font-medium text-slate-900">
+                      <div className="flex items-center justify-between gap-3 pb-1">
+                        <div className="font-medium text-slate-900 leading-tight">
                           {item.title}
                         </div>
                         <div className="text-xs text-slate-400">
@@ -342,7 +331,7 @@ export default function App() {
             <div className="mb-3 flex items-end justify-between">
               <h2 className="text-xl font-bold text-slate-900">Apps</h2>
               <a
-                className="text-sm text-slate-600 transition duration-150 hover:text-slate-900"
+                className="text-sm text-slate-600 transition duration-150 hover:text-slate-900 pr-1"
                 href="https://apps.mysxan.com/"
               >
                 View all
@@ -350,17 +339,25 @@ export default function App() {
             </div>
             <div className="grid gap-4">
               {apps.map((item) => (
-                <TiltCard key={item.title} className="p-5">
-                  <div className="flex items-start gap-3">
-                    <div className="h-[68px] w-[68px] rounded-2xl border border-slate-300/60 bg-white/70" />
-                    <div>
-                      <div className="font-medium text-slate-900">
-                        {item.title}
+                <a key={item.title} href={item.href} className="block">
+                  <TiltCard className="p-5">
+                    <div className="flex items-start gap-3">
+                      <img
+                        src={`https://${item.url}icon-192-maskable.png`}
+                        alt={item.title}
+                        className="h-[68px] w-[68px] flex-shrink-0 rounded-2xl border border-slate-300/60 bg-white/70 object-cover"
+                      />
+                      <div>
+                        <div className="font-medium text-slate-900 leading-tight py-0.5">
+                          {item.title}
+                        </div>
+                        <div className="text-sm text-slate-600">
+                          {item.meta}
+                        </div>
                       </div>
-                      <div className="text-sm text-slate-600">{item.meta}</div>
                     </div>
-                  </div>
-                </TiltCard>
+                  </TiltCard>
+                </a>
               ))}
             </div>
           </div>
@@ -368,7 +365,9 @@ export default function App() {
 
         <section className="mt-12">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-xl font-bold text-slate-900">Links</h2>
+            <h2 id="links" className="text-xl font-bold text-slate-900">
+              Links
+            </h2>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {links.map((item) => (
@@ -378,7 +377,7 @@ export default function App() {
                     <div className="text-xs uppercase tracking-[0.3em] text-slate-400 pb-1">
                       {item.tag}
                     </div>
-                    <div className="text-lg font-semibold text-slate-900">
+                    <div className="text-lg font-medium text-slate-900">
                       {item.title}
                     </div>
                     <p className="text-sm text-slate-600 leading-tight">
