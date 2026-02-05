@@ -181,11 +181,11 @@ function TiltCard({
     const el = ref.current;
     setHover(false);
     if (!el) return;
-    el.style.transition = "transform 220ms cubic-bezier(.2,.8,.2,1)";
+    el.style.transition = "transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1)";
     el.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale(1)`;
     window.setTimeout(() => {
       if (el) el.style.transition = "";
-    }, 240);
+    }, 300);
   };
 
   return (
@@ -269,19 +269,19 @@ export default function App() {
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="https://archive.mysxan.com/"
-                className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition duration-150 hover:opacity-95"
+                className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition duration-200 hover:shadow-lg hover:opacity-90 active:scale-95"
               >
                 Explore archive
               </a>
               <a
                 href="https://works.mysxan.com/"
-                className="rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-medium backdrop-blur transition duration-150 hover:bg-white"
+                className="rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-medium backdrop-blur transition duration-200 hover:bg-white hover:border-zinc-300 hover:shadow-md active:scale-95"
               >
                 View portfolio
               </a>
               <a
-                href="https://mysxan.com/contact"
-                className="rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-medium backdrop-blur transition duration-150 hover:bg-white"
+                href="https://works.mysxan.com/#contact"
+                className="rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-medium backdrop-blur transition duration-200 hover:bg-white hover:border-zinc-300 hover:shadow-md active:scale-95"
               >
                 Contact
               </a>
